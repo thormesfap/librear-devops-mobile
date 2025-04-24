@@ -2,18 +2,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <br.com.librear.customView.Header
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/header_main"
+        layout="@layout/header"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <br.com.librear.customView.CourseCard
+        android:id="@+id/card_alunos_surdez"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:courseImage="@drawable/card_recebendo_alunos_com_surdez"
+        app:courseRating="5"
+        app:courseTitle="Recebendo Alunos com Surdez"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_main" />
+
+    <br.com.librear.customView.CourseCard
+        android:id="@+id/card_aprendendo_libras"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:courseImage="@drawable/card_aprendendo_libras"
+        app:courseRating="4"
+        app:courseTitle="Aprendendo Libras"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_alunos_surdez" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CourseCard">
+        <attr name="courseImage" format="reference"/>
+        <attr name="courseTitle" format="string"/>
+        <attr name="courseRating" format="integer"/>
+    </declare-styleable>
+</resources>
