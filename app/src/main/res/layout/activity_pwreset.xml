@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="349dp"
         android:layout_height="560dp"
+        android:padding="12dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#b288c0"
         app:layout_constraintTop_toTopOf="parent"
@@ -75,7 +76,8 @@
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:background="@drawable/roundstyle"
-            android:backgroundTint="#2176ae"
+            android:backgroundTint="@color/action"
+            app:backgroundTint="@null"
             android:text="Enviar"
             app:layout_constraintTop_toBottomOf="@id/inputEmail2"
             app:layout_constraintStart_toStartOf="parent"

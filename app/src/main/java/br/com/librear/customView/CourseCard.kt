@@ -1,7 +1,6 @@
 package br.com.librear.customView
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -22,21 +21,21 @@ class CourseCard @JvmOverloads constructor(
     private val courseTitleTextView: TextView
     private val starsLayout: LinearLayout
 
-    init{
+    init {
         LayoutInflater.from(context).inflate(R.layout.course_card, this, true)
         courseImageView = findViewById(R.id.courseImageView)
         courseTitleTextView = findViewById(R.id.courseTitleTextView)
         starsLayout = findViewById(R.id.starsLayout)
         orientation = VERTICAL
 
-        attrs?.let{
+        attrs?.let {
             context.withStyledAttributes(it, R.styleable.CourseCard, 0, 0) {
                 val imageResource = getResourceId(
                     R.styleable.CourseCard_courseImage,
                     R.drawable.card_aprendendo_libras
                 )
                 val title = getString(R.styleable.CourseCard_courseTitle)
-                val rating = getInt(R.styleable.CourseCard_courseRating, 0)
+                val rating: Int = getInt(R.styleable.CourseCard_courseRating, -1)
                 courseImageView.setImageDrawable(
                     AppCompatResources.getDrawable(
                         context,
@@ -44,19 +43,23 @@ class CourseCard @JvmOverloads constructor(
                     )
                 )
                 courseTitleTextView.text = title
-                setRating(rating)
+                if (rating > 0) {
+                    setRating(rating)
+                } else{
+                    courseTitleTextView.textSize = 26F
+                }
             }
         }
     }
 
-    private fun setRating(rating: Int){
+    private fun setRating(rating: Int) {
         starsLayout.removeAllViews()
-        for(i in 1..5){
+        for (i in 1..5) {
             val star = ImageView(context)
             val starDrawable = AppCompatResources.getDrawable(context, R.drawable.icon_star)
             val mutableDrawable = starDrawable?.mutate()
             val wrappedDrawable = DrawableCompat.wrap(mutableDrawable!!)
-            if(i > rating){
+            if (i > rating) {
                 wrappedDrawable.setTint(ContextCompat.getColor(context, R.color.action_disabled))
             }
             star.setImageDrawable(wrappedDrawable)
