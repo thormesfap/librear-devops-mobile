@@ -5,4 +5,11 @@
         <attr name="courseTitle" format="string"/>
         <attr name="courseRating" format="integer"/>
     </declare-styleable>
+    <declare-styleable name="CourseDetailCard">
+        <attr name="courseDetailImage" format="reference"/>
+        <attr name="courseDetailTitle" format="string"/>
+        <attr name="courseDetailDescription" format="string"/>
+        <attr name="lessonsAmount" format="integer"/>
+        <attr name="readingsAmount" format="integer"/>
+    </declare-styleable>
 </resources>

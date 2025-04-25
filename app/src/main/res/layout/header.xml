@@ -7,25 +7,44 @@
     android:background="@color/secondary"
     android:paddingHorizontal="4dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
     <ImageView
         android:id="@+id/menu"
-        android:layout_width="32dp"
         android:layout_height="match_parent"
+        android:layout_width="wrap_content"
         android:layout_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icon_menu"
+        android:padding="8dp"
+        android:src="@drawable/icon_menu"
         android:contentDescription="Botão para abrir menu"
-        tools:layout_editor_absoluteY="0dp" />
+        />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="200dp"
+        android:layout_height="32dp"
+        android:background="@drawable/shape_input_background"
+        android:hint="Pesquisar"
+        android:textSize="12sp"
+        android:padding="4dp"
+        android:drawableStart="@drawable/icon_lupa"
+        />
 
     <ImageView
         android:id="@+id/profile"
         android:layout_width="32dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/icon_profile"
+        android:padding="8dp"
+        android:src="@drawable/icon_profile"
         android:clickable="true"
         android:contentDescription="Botão para ir para tela de login"
         tools:layout_editor_absoluteY="0dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

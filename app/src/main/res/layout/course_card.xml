@@ -2,21 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
     android:layout_margin="16dp"
     android:background="@drawable/shape_card_background"
     android:elevation="4dp"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/courseImageView"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="300dp"
+        android:layout_height="225dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/primary"
+        android:background="@drawable/roundstyle"
         android:scaleType="centerCrop"
+        android:clipToOutline="true"
         android:src="@drawable/card_recebendo_alunos_com_surdez"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 

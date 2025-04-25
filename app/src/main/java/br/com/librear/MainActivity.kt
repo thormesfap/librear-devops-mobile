@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.com.librear.customView.Header
 
-class MainActivity : AppCompatActivity(), Header.OnProfileClickListener {
+class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.OnSearchListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,9 +20,16 @@ class MainActivity : AppCompatActivity(), Header.OnProfileClickListener {
         }
         val header = findViewById<Header>(R.id.header_main)
         header.setOnProfileClickListener(this)
+        header.setOnSearchListener(this)
     }
     override fun onProfileClick() {
         val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onSearchSubmit(searchText: String){
+        val intent = Intent(this, SearchResultActivity::class.java)
+        intent.putExtra("searchText", searchText)
         startActivity(intent)
     }
 }

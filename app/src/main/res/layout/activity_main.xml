@@ -9,35 +9,83 @@
     tools:context=".MainActivity">
 
     <br.com.librear.customView.Header
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/header_main"
         layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <br.com.librear.customView.CourseCard
-        android:id="@+id/card_alunos_surdez"
+    <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:courseImage="@drawable/card_recebendo_alunos_com_surdez"
-        app:courseRating="5"
-        app:courseTitle="Recebendo Alunos com Surdez"
+        android:contentDescription="Conteúdo Principal"
+        android:paddingBottom="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_main" />
+        app:layout_constraintTop_toBottomOf="@id/header_main">
 
-    <br.com.librear.customView.CourseCard
-        android:id="@+id/card_aprendendo_libras"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:courseImage="@drawable/card_aprendendo_libras"
-        app:courseRating="4"
-        app:courseTitle="Aprendendo Libras"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_alunos_surdez" />
+        <LinearLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/scroll_view">
+
+            <TextView
+                android:id="@+id/header_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Uma grande variedade de cursos"
+                android:textAlignment="center"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:justificationMode="inter_word"
+                android:padding="28dp"
+                android:text="Na nossa plataforma você terá acesso a diversos cursos relacionados ao aprendizado e ensino relacionados à acessibilidade de alunos com deficiência visual, deficiência auditiva ou surdocegueira. Você terá oportunidade de compreender como esses alunos percebem o mundo à sua volta, bem como diversas ferramentas que possam permitir seu acolhimento e comunicação."
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/category_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Principais Categorias"
+                android:textAlignment="center"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+            <br.com.librear.customView.CourseCard
+                android:id="@+id/card_alunos_surdez"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:courseImage="@drawable/card_deficiencia_visual"
+                app:courseTitle="Deficiência Visual" />
+
+            <br.com.librear.customView.CourseCard
+                android:id="@+id/card_aprendendo_libras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:courseImage="@drawable/card_deficiencia_auditiva"
+                app:courseTitle="Deficiência Auditiva" />
+
+            <br.com.librear.customView.CourseCard
+                android:id="@+id/card_surdocegueira"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:courseImage="@drawable/card_libras_tactil"
+                app:courseTitle="Surdo Cegueira" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
