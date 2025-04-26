@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.edit
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,11 @@ class LoginActivity : AppCompatActivity() {
 
         val entrar_button: Button = findViewById<Button>(R.id.button_login)
         entrar_button.setOnClickListener {
+            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+            prefs.edit() { putBoolean("isLoggedIn", true) }
             Toast.makeText(this, "Login realizado com sucesso", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         val esqueci_senha: TextView = findViewById<TextView>(R.id.esqueci_senha)
