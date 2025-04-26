@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourseDetailActivity">
+
+    <br.com.librear.customView.Header
+        android:id="@+id/header_main"
+        layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scroll_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_main">
+
+        <LinearLayout
+            android:id="@+id/linear_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+
+            <br.com.librear.customView.CourseDetailCard
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:courseDetailDescription="Aprenda a utilizar a Língua Brasileira de Sinais (LIBRAS) e garanta o entendimento e atendimento adequado às pessoas com deficiência auditiva"
+                app:courseDetailImage="@drawable/card_aprendendo_libras"
+                app:courseDetailTitle="Aprendendo Libras"
+                app:layout_constraintTop_toBottomOf="@id/header_main"
+                app:lessonsAmount="6"
+                app:readingsAmount="4"
+                app:sunscribleable="true"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Aulas"
+                android:textSize="16dp" />
+
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityMinutes="12"
+                app:stripActivityName="Aprendendo Libras 01"
+                android:layout_marginVertical="4dp"
+                app:stripActivitySequence="1" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityMinutes="7"
+                app:stripActivityName="Aprendendo Libras 02"
+                app:stripActivitySequence="2" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityMinutes="3"
+                app:stripActivityName="Aprendendo Libras 03"
+                android:layout_marginVertical="4dp"
+                app:stripActivitySequence="3" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityMinutes="9"
+                app:stripActivityName="Aprendendo Libras 04"
+                app:stripActivitySequence="4" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityMinutes="10"
+                app:stripActivityName="Aprendendo Libras 05"
+                android:layout_marginVertical="4dp"
+                app:stripActivitySequence="5" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityMinutes="3"
+                app:stripActivityName="Aprendendo Libras 06"
+                app:stripActivitySequence="6" />
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Leituras"
+                android:textSize="16dp" />
+
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_book"
+                app:stripActivityName="Sobre Libras 01"
+                android:layout_marginVertical="4dp"
+                app:stripActivitySequence="1" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityName="Sobre Libras 02"
+                app:stripActivitySequence="2" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityName="Sobre Libras 03"
+                android:layout_marginVertical="4dp"
+                app:stripActivitySequence="3" />
+            <br.com.librear.customView.ActivityStrip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stripActivityImage="@drawable/icon_camera"
+                app:stripActivityName="Sobre Libras 04"
+                app:stripActivitySequence="4" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
