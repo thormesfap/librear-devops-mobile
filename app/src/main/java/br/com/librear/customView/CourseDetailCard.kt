@@ -53,7 +53,25 @@ class CourseDetailCard @JvmOverloads constructor(
                 courseDescriptionTextView.text = description
                 lessonAmountTextView.text = lessons.toString() + " aulas"
                 readingsAmountTextView.text = readings.toString() + " leituras"
+                updateButtonVisibility()
             }
         }
+    }
+
+    private fun updateButtonVisibility() {
+        val isLoggedIn = checkUserLoggedIn()
+        val entrarButton = findViewById<TextView>(R.id.entrarButton)
+        if(isLoggedIn){
+            entrarButton.visibility = VISIBLE
+        }else{
+            entrarButton.visibility = GONE
+        }
+
+
+    }
+    private fun checkUserLoggedIn():Boolean{
+        val shared = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = shared.getBoolean("isLoggedIn", false)
+        return isLoggedIn
     }
 }
