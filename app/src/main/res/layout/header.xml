@@ -14,12 +14,19 @@
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         >
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Botão para ir para tela de inicial"
+        />
 
     <ImageView
         android:id="@+id/menu"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="48dp"
+        android:layout_width="48dp"
         android:padding="8dp"
         android:src="@drawable/icon_menu"
         android:contentDescription="Botão para abrir menu"
@@ -27,7 +34,7 @@
 
     <EditText
         android:id="@+id/search"
-        android:layout_width="200dp"
+        android:layout_width="260dp"
         android:layout_height="32dp"
         android:background="@drawable/shape_input_background"
         android:hint="Pesquisar"
@@ -36,15 +43,15 @@
         android:drawableStart="@drawable/icon_lupa"
         />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile"
-        android:layout_width="32dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:padding="8dp"
         android:src="@drawable/icon_profile"
         android:clickable="true"
         android:contentDescription="Botão para ir para tela de login"
+        app:shapeAppearanceOverlay="@style/circleImageView"
         tools:layout_editor_absoluteY="0dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

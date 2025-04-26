@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.
         header.setOnProfileClickListener(this)
         header.setOnSearchListener(this)
     }
+
     override fun onProfileClick() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        println("Botão de perfil clicado.")
     }
 
-    override fun onSearchSubmit(searchText: String){
+    override fun onSearchSubmit(searchText: String) {
         val intent = Intent(this, SearchResultActivity::class.java)
         intent.putExtra("searchText", searchText)
         startActivity(intent)
