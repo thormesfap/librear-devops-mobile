@@ -1,0 +1,88 @@
+Index: app/src/main/res/layout/header.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"42dp\"\r\n    android:background=\"@color/secondary\"\r\n    android:paddingHorizontal=\"4dp\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"horizontal\"\r\n        android:gravity=\"center\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        >\r\n    <ImageView\r\n        android:id=\"@+id/logo\"\r\n        android:layout_width=\"48dp\"\r\n        android:layout_height=\"48dp\"\r\n        android:padding=\"8dp\"\r\n        android:src=\"@drawable/logo\"\r\n        android:contentDescription=\"Botão para ir para tela de inicial\"\r\n        />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/menu\"\r\n        android:layout_height=\"48dp\"\r\n        android:layout_width=\"48dp\"\r\n        android:padding=\"8dp\"\r\n        android:src=\"@drawable/icon_menu\"\r\n        android:contentDescription=\"Botão para abrir menu\"\r\n        />\r\n\r\n    <EditText\r\n        android:id=\"@+id/search\"\r\n        android:layout_width=\"260dp\"\r\n        android:layout_height=\"32dp\"\r\n        android:background=\"@drawable/shape_input_background\"\r\n        android:hint=\"Pesquisar\"\r\n        android:textSize=\"12sp\"\r\n        android:padding=\"4dp\"\r\n        android:drawableStart=\"@drawable/icon_lupa\"\r\n        />\r\n\r\n    <com.google.android.material.imageview.ShapeableImageView\r\n        android:id=\"@+id/profile\"\r\n        android:layout_width=\"48dp\"\r\n        android:layout_height=\"48dp\"\r\n        android:padding=\"8dp\"\r\n        android:src=\"@drawable/icon_profile\"\r\n        android:clickable=\"true\"\r\n        android:contentDescription=\"Botão para ir para tela de login\"\r\n        app:shapeAppearanceOverlay=\"@style/circleImageView\"\r\n        tools:layout_editor_absoluteY=\"0dp\" />\r\n    </LinearLayout>\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/header.xml b/app/src/main/res/layout/header.xml
+--- a/app/src/main/res/layout/header.xml	(revision 31042314a1e5ade4e76c3192d88f59a8fc3d343f)
++++ b/app/src/main/res/layout/header.xml	(date 1745692762364)
+@@ -4,20 +4,20 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="42dp"
+-    android:background="@color/secondary"
+-    android:paddingHorizontal="4dp">
++    android:background="@color/secondary">
+ 
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="horizontal"
++        android:paddingHorizontal="12dp"
+         android:gravity="center"
+         app:layout_constraintTop_toTopOf="parent"
+         >
+     <ImageView
+         android:id="@+id/logo"
+         android:layout_width="48dp"
+-        android:layout_height="48dp"
++        android:layout_height="match_parent"
+         android:padding="8dp"
+         android:src="@drawable/logo"
+         android:contentDescription="Botão para ir para tela de inicial"
+@@ -25,7 +25,7 @@
+ 
+     <ImageView
+         android:id="@+id/menu"
+-        android:layout_height="48dp"
++        android:layout_height="match_parent"
+         android:layout_width="48dp"
+         android:padding="8dp"
+         android:src="@drawable/icon_menu"
+@@ -34,11 +34,14 @@
+ 
+     <EditText
+         android:id="@+id/search"
+-        android:layout_width="260dp"
++        android:layout_width="0dp"
+         android:layout_height="32dp"
+-        android:background="@drawable/shape_input_background"
++        android:background="@drawable/rounded_corners"
++        android:backgroundTint="@color/primary"
+         android:hint="Pesquisar"
++        android:drawableTint="@color/secondary"
+         android:textSize="12sp"
++        android:layout_weight="1"
+         android:padding="4dp"
+         android:drawableStart="@drawable/icon_lupa"
+         />
+@@ -46,7 +49,7 @@
+     <com.google.android.material.imageview.ShapeableImageView
+         android:id="@+id/profile"
+         android:layout_width="48dp"
+-        android:layout_height="48dp"
++        android:layout_height="match_parent"
+         android:padding="8dp"
+         android:src="@drawable/icon_profile"
+         android:clickable="true"
+Index: app/src/main/res/drawable/icon_lupa.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/icon_lupa.xml b/app/src/main/res/drawable/icon_lupa.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/icon_lupa.xml	(revision 31042314a1e5ade4e76c3192d88f59a8fc3d343f)
++++ /dev/null	(revision 31042314a1e5ade4e76c3192d88f59a8fc3d343f)
+@@ -1,9 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="32dp"
+-    android:height="32dp"
+-    android:viewportWidth="32"
+-    android:viewportHeight="32">
+-  <path
+-      android:pathData="M13.724,0.04C6.279,0.04 0.222,6.263 0.222,13.914C0.222,21.565 6.279,27.788 13.724,27.788C16,27.788 18.238,27.233 20.128,26.163C20.28,26.35 20.448,26.523 20.63,26.678L24.488,30.643C24.844,31.055 25.278,31.387 25.764,31.62C26.25,31.853 26.777,31.982 27.313,31.998C27.849,32.014 28.383,31.918 28.881,31.715C29.38,31.511 29.832,31.205 30.211,30.816C30.591,30.426 30.888,29.961 31.086,29.449C31.284,28.937 31.378,28.388 31.362,27.838C31.346,27.287 31.221,26.745 30.994,26.246C30.767,25.747 30.444,25.3 30.043,24.934L26.185,20.97C25.997,20.777 25.79,20.604 25.568,20.455C26.61,18.512 27.265,16.253 27.265,13.874C27.265,6.224 21.209,0 13.763,0L13.724,0.04ZM13.724,4.004C19.087,4.004 23.369,8.404 23.369,13.914C23.369,16.53 22.443,18.948 20.823,20.732C20.784,20.772 20.746,20.812 20.707,20.851C20.525,21.007 20.357,21.179 20.205,21.367C18.508,22.952 16.193,23.864 13.686,23.864C8.324,23.864 4.041,19.464 4.041,13.954C4.041,8.444 8.324,4.043 13.686,4.043L13.724,4.004Z"
+-      android:fillColor="#777777"/>
+-</vector>

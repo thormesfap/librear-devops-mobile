@@ -3,7 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#F5F5F5</color>
+    <color name="primary_disabled">#4DF5F5F5</color>
     <color name="secondary">#B288C0</color>
+    <color name="secondary_disabled">#4DB288C0</color>
     <color name="action">#2176AE</color>
     <color name="action_disabled">#4D2176AE</color>
     <color name="text_colo_light_background">#222222</color>

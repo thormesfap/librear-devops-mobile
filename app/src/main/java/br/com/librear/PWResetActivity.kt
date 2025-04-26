@@ -31,7 +31,10 @@ class PWResetActivity : AppCompatActivity() {
         botaoEnviar.setOnClickListener {
             Toast.makeText(this, "Senha alterada com sucesso", Toast.LENGTH_SHORT)
                 .show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
+
 
     }
 }

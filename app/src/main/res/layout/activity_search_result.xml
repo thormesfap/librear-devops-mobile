@@ -50,6 +50,7 @@
                 app:readingsAmount="2" />
 
             <br.com.librear.customView.CourseDetailCard
+                android:id="@+id/course_aprendendo_libras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:courseDetailDescription="Aprenda a utilizar a Língua Brasileira de Sinais (LIBRAS) e garanta o entendimento e atendimento adequado às pessoas com deficiência auditiva"

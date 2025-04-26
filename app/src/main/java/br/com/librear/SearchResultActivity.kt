@@ -1,11 +1,13 @@
 package br.com.librear
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.com.librear.customView.CourseDetailCard
 import br.com.librear.customView.Header
 
 class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener {
@@ -24,6 +26,12 @@ class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener 
 
         val header = findViewById<Header>(R.id.header_main)
         header.setOnProfileClickListener(this)
+
+        val card = findViewById<CourseDetailCard>(R.id.course_aprendendo_libras)
+        card.setOnClickListener {
+            val intent = Intent(this, CourseDetailActivity::class.java)
+            startActivity(intent)
+        }
 
     }
     override fun onProfileClick() {

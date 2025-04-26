@@ -22,6 +22,7 @@ class CourseDetailCard @JvmOverloads constructor(
     private val courseDescriptionTextView: TextView
     private val lessonAmountTextView: TextView
     private val readingsAmountTextView: TextView
+    private var subscribeable: Boolean = false
 
 
     init {
@@ -42,6 +43,7 @@ class CourseDetailCard @JvmOverloads constructor(
                 val description = getString(R.styleable.CourseDetailCard_courseDetailDescription)
                 val lessons = getInt(R.styleable.CourseDetailCard_lessonsAmount, 0)
                 val readings = getInt(R.styleable.CourseDetailCard_readingsAmount, 0)
+                subscribeable = getBoolean(R.styleable.CourseDetailCard_sunscribleable, false)
 
                 courseImageView.setImageDrawable(
                     AppCompatResources.getDrawable(
@@ -53,7 +55,25 @@ class CourseDetailCard @JvmOverloads constructor(
                 courseDescriptionTextView.text = description
                 lessonAmountTextView.text = lessons.toString() + " aulas"
                 readingsAmountTextView.text = readings.toString() + " leituras"
+                updateButtonVisibility()
             }
         }
+    }
+
+    private fun updateButtonVisibility() {
+        val isLoggedIn = checkUserLoggedIn()
+        val entrarButton = findViewById<TextView>(R.id.entrarButton)
+        if(isLoggedIn && subscribeable){
+            entrarButton.visibility = VISIBLE
+        }else{
+            entrarButton.visibility = GONE
+        }
+
+
+    }
+    private fun checkUserLoggedIn():Boolean{
+        val shared = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = shared.getBoolean("isLoggedIn", false)
+        return isLoggedIn
     }
 }

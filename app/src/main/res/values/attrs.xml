@@ -11,5 +11,19 @@
         <attr name="courseDetailDescription" format="string"/>
         <attr name="lessonsAmount" format="integer"/>
         <attr name="readingsAmount" format="integer"/>
+        <attr name="sunscribleable" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="CourseFollowCard">
+        <attr name="courseFollowImage" format="reference"/>
+        <attr name="courseFollowTitle" format="string"/>
+        <attr name="courseFollowRating" format="integer"/>
+        <attr name="courseFollowCompletion" format="integer"/>
+        <attr name="courseFollowDate" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="StripActivity">
+        <attr name="stripActivityImage" format="reference"/>
+        <attr name="stripActivitySequence" format="integer"/>
+        <attr name="stripActivityName" format="string"/>
+        <attr name="stripActivityMinutes" format="integer"/>
     </declare-styleable>
 </resources>
