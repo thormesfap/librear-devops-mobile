@@ -26,47 +26,47 @@
         app:layout_constraintTop_toBottomOf="@+id/header_main"
         app:srcCompat="@drawable/card_recebendo_alunos_com_surdez" />
 
-    <TextView
-        android:id="@+id/textoTranscrito"
-        android:layout_width="800dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Texto tralala la la la la la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la laTexto tralala la la la la la la la la la Texto tralala la la la la la la la la la"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/transcricao" />
-
-    <TextView
-        android:id="@+id/transcricao"
+    <LinearLayout
+        android:id="@+id/linear_aula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Transcrição"
-        android:textAlignment="center"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:orientation="vertical"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@id/imageView5">
 
-    <Button
-        android:id="@+id/botaoConcluido"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/roundstyle"
-        android:backgroundTint="@color/action"
-        android:text="Concluído"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoTranscrito" />
+        <TextView
+            android:id="@+id/transcricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Transcrição"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
-    <!-- Botão Concluído -->
+        <TextView
+            android:id="@+id/textoTranscrito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:justificationMode="inter_word"
+            android:text="Texto tralala la la la la la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la laTexto tralala la la la la la la la la la Texto tralala la la la la la la la la la"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/botaoConcluido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="@color/action"
+            android:text="Marcar Concluído"
+            android:textSize="30sp"
+            app:backgroundTint="@null" />
+
+        <!-- Botão Concluído -->
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
