@@ -39,6 +39,9 @@
         <activity
             android:name=".PWResetActivity"
             android:exported="false" />
+        <activity
+            android:name=".AulaActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
