@@ -53,7 +53,14 @@
                 android:padding="28dp"
                 android:text="Na nossa plataforma você terá acesso a diversos cursos relacionados ao aprendizado e ensino relacionados à acessibilidade de alunos com deficiência visual, deficiência auditiva ou surdocegueira. Você terá oportunidade de compreender como esses alunos percebem o mundo à sua volta, bem como diversas ferramentas que possam permitir seu acolhimento e comunicação."
                 android:textSize="16dp" />
-
+            <TextView
+                android:id="@+id/response"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:textColor="@color/secondary"
+                />
             <TextView
                 android:id="@+id/category_title"
                 android:layout_width="match_parent"

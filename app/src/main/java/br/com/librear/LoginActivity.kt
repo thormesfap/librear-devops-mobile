@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.content.edit
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +27,39 @@ class LoginActivity : AppCompatActivity() {
 
         val entrar_button: Button = findViewById<Button>(R.id.button_login)
         entrar_button.setOnClickListener {
-            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
-            prefs.edit() { putBoolean("isLoggedIn", true) }
-            Toast.makeText(this, "Login realizado com sucesso", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val email = findViewById<TextView>(R.id.input_email).text.toString()
+            val senha = findViewById<TextView>(R.id.input_senha).text.toString()
+            RetrofitInstance.apiInterface.login(LoginRequest(email, senha)).enqueue(
+                object : Callback<LoginResponse> {
+                    override fun onResponse(
+                        call: Call<LoginResponse>,
+                        response: Response<LoginResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+                            prefs.edit().putBoolean("isLoggedIn", true).apply()
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "Login bem sucedido!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this@LoginActivity, "Login falhou!", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        Toast.makeText(this@LoginActivity, "Falha na conexão!", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+            )
+
+
         }
 
         val esqueci_senha: TextView = findViewById<TextView>(R.id.esqueci_senha)

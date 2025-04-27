@@ -1,12 +1,19 @@
 package br.com.librear
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.com.librear.customView.Header
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.OnSearchListener {
     override fun onCreate(savedInstanceState: Bundle?) {
