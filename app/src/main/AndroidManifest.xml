@@ -45,5 +45,7 @@
         <activity
             android:name=".AulaActivity"
             android:exported="false" />
+        <activity android:name=".SignupActivity"
+                android:exported="false"/>
     </application>
 </manifest>

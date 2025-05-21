@@ -5,20 +5,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class LoginActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity() {
     lateinit var inputEmail: EditText
     lateinit var inputSenha: EditText
+    lateinit var inputSenhaConfirm: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_signup)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -27,12 +27,13 @@ class LoginActivity : AppCompatActivity() {
 
         inputEmail = findViewById(R.id.input_email)
         inputSenha = findViewById(R.id.input_senha)
+        inputSenhaConfirm = findViewById(R.id.input_senha_confirm)
 
-        val entrar_button: Button = findViewById<Button>(R.id.button_login)
-        entrar_button.setOnClickListener {
+        val signup_button: Button = findViewById<Button>(R.id.button_signup)
+        signup_button.setOnClickListener {
             if(!validateFields()){
                 Toast.makeText(
-                    this@LoginActivity,
+                    this@SignupActivity,
                     "Corrija os dados do formulário",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -41,13 +42,13 @@ class LoginActivity : AppCompatActivity() {
             val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
             prefs.edit().putBoolean("isLoggedIn", true).apply()
             Toast.makeText(
-                this@LoginActivity,
-                "Login bem sucedido!",
+                this@SignupActivity,
+                "Cadastro bem sucedido!",
                 Toast.LENGTH_SHORT
             ).show()
 
             // Isso é mockado, remover depois e descomentar o codigo a seguir
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            val intent = Intent(this@SignupActivity, MainActivity::class.java)
             startActivity(intent)
             return@setOnClickListener
 
@@ -86,18 +87,6 @@ class LoginActivity : AppCompatActivity() {
 //            )
         }
 
-        val esqueci_senha: TextView = findViewById<TextView>(R.id.esqueci_senha)
-        esqueci_senha.setOnClickListener {
-            val intent = Intent(this, WRPWActivity::class.java)
-            startActivity(intent)
-        }
-
-        val signup_view: TextView = findViewById<TextView>(R.id.signup_view)
-        signup_view.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
-        }
-
         val logo = findViewById<ImageView>(R.id.logo)
         logo.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -123,6 +112,17 @@ class LoginActivity : AppCompatActivity() {
         }
         if(this.inputSenha.text.length < 8){
             this.inputSenha.error = "A senha deve ter no mínimo 8 caracteres"
+            return false
+        }
+
+        if(this.inputSenhaConfirm.text.isEmpty()){
+            this.inputSenhaConfirm.error = "Campo obrigatório"
+            return false
+        }
+
+        if(this.inputSenhaConfirm.text.toString() != this.inputSenha.text.toString()){
+            this.inputSenhaConfirm.error = "As senhas não conferem"
+            this.inputSenha.error = "As senhas não conferem"
             return false
         }
         return true
