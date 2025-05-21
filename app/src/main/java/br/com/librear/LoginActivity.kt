@@ -42,38 +42,52 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
                 return@setOnClickListener
             }
-            val email = inputEmail.toString()
-            val senha = inputSenha.toString()
+            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+            prefs.edit().putBoolean("isLoggedIn", true).apply()
+            Toast.makeText(
+                this@LoginActivity,
+                "Login bem sucedido!",
+                Toast.LENGTH_SHORT
+            ).show()
 
-            RetrofitInstance.apiInterface.login(LoginRequest(email, senha)).enqueue(
-                object : Callback<LoginResponse> {
-                    override fun onResponse(
-                        call: Call<LoginResponse>,
-                        response: Response<LoginResponse>
-                    ) {
-                        if (response.isSuccessful) {
-                            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
-                            prefs.edit().putBoolean("isLoggedIn", true).apply()
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "Login bem sucedido!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
-                        } else {
-                            Toast.makeText(this@LoginActivity, "Login falhou!", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                    }
+            // Isso é mockado, remover depois e descomentar o codigo a seguir
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            return@setOnClickListener
 
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(this@LoginActivity, "Falha na conexão!", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-
-                }
-            )
+            // Descomentar o codigo a seguir depois
+//            val email = inputEmail.text.toString()
+//            val senha = inputSenha.text.toString()
+//
+//            RetrofitInstance.apiInterface.login(LoginRequest(email, senha)).enqueue(
+//                object : Callback<LoginResponse> {
+//                    override fun onResponse(
+//                        call: Call<LoginResponse>,
+//                        response: Response<LoginResponse>
+//                    ) {
+//                        if (response.isSuccessful) {
+//                            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+//                            prefs.edit().putBoolean("isLoggedIn", true).apply()
+//                            Toast.makeText(
+//                                this@LoginActivity,
+//                                "Login bem sucedido!",
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//                            startActivity(intent)
+//                        } else {
+//                            Toast.makeText(this@LoginActivity, "Login falhou!", Toast.LENGTH_SHORT)
+//                                .show()
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                        Toast.makeText(this@LoginActivity, "Falha na conexão!", Toast.LENGTH_SHORT)
+//                            .show()
+//                    }
+//
+//                }
+//            )
         }
 
         val esqueci_senha: TextView = findViewById<TextView>(R.id.esqueci_senha)
