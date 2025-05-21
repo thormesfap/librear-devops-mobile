@@ -3,6 +3,8 @@ package br.com.librear
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +17,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+    lateinit var inputEmail: EditText
+    lateinit var inputSenha: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,10 +29,22 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        inputEmail = findViewById(R.id.input_email)
+        inputSenha = findViewById(R.id.input_senha)
+
         val entrar_button: Button = findViewById<Button>(R.id.button_login)
         entrar_button.setOnClickListener {
-            val email = findViewById<TextView>(R.id.input_email).text.toString()
-            val senha = findViewById<TextView>(R.id.input_senha).text.toString()
+            if(!validateFields()){
+                Toast.makeText(
+                    this@LoginActivity,
+                    "Corrija os dados do formulário",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+            val email = inputEmail.toString()
+            val senha = inputSenha.toString()
+
             RetrofitInstance.apiInterface.login(LoginRequest(email, senha)).enqueue(
                 object : Callback<LoginResponse> {
                     override fun onResponse(
@@ -58,8 +74,6 @@ class LoginActivity : AppCompatActivity() {
 
                 }
             )
-
-
         }
 
         val esqueci_senha: TextView = findViewById<TextView>(R.id.esqueci_senha)
@@ -68,5 +82,33 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val logo = findViewById<ImageView>(R.id.logo)
+        logo.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    private fun validateFields(): Boolean {
+        if(this.inputEmail.text.isEmpty()){
+            this.inputEmail.error = "Campo obrigatório"
+            return false
+        }
+        val email = inputEmail.text
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            this.inputEmail.error = "E-mail inválido"
+            return false
+        }
+
+        if(this.inputSenha.text.isEmpty()){
+            this.inputSenha.error = "Campo obrigatório"
+            return false
+        }
+        if(this.inputSenha.text.length < 8){
+            this.inputSenha.error = "A senha deve ter no mínimo 8 caracteres"
+            return false
+        }
+        return true
     }
 }
