@@ -41,35 +41,55 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:passwordToggleEnabled="true"
+            android:id="@+id/layoutSenha">
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputSenha"
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:background="@drawable/roundstyle"
             android:backgroundTint="#ffffff"
+            android:autofillHints="password"
             android:hint="Nova senha"
             android:inputType="textPassword"
-            android:padding="12dp"
             android:textColorHint="#999999"
-            app:layout_constraintTop_toBottomOf="@id/textView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutRepetirSenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSenha"
+            android:layout_marginTop="16dp"
+            app:passwordToggleEnabled="true"
+            >
         <EditText
-            android:id="@+id/inputEmail2"
+            android:id="@+id/inputRepetirSenha"
             android:layout_width="300dp"
             android:layout_height="48dp"
+            android:autofillHints="repeatPassword"
             android:background="@drawable/roundstyle"
             android:backgroundTint="#ffffff"
             android:hint="Repetir nova senha"
+            android:drawableEnd="@drawable/icon_visibility"
             android:inputType="textPassword"
             android:padding="12dp"
             android:textColorHint="#999999"
-            app:layout_constraintTop_toBottomOf="@id/inputEmail"
+            app:layout_constraintTop_toBottomOf="@id/layoutSenha"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/botaoEnviar"
@@ -79,7 +99,7 @@
             android:backgroundTint="@color/action"
             app:backgroundTint="@null"
             android:text="Enviar"
-            app:layout_constraintTop_toBottomOf="@id/inputEmail2"
+            app:layout_constraintTop_toBottomOf="@id/layoutRepetirSenha"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp" />
