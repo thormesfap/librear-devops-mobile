@@ -1,5 +1,6 @@
 package br.com.librear
 
+import android.R
 import com.google.gson.annotations.SerializedName
 
 data class ErrorResponse(
@@ -20,6 +21,8 @@ data class LoginResponse(
 data class CourseResponse(
     val id: Int,
     val titulo: String,
+    @SerializedName("capa_url")
+    val capaUrl: String?,
     val descricao: String,
     val categoria: String,
     @SerializedName("created_at")

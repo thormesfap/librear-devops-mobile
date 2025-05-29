@@ -4,7 +4,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
     private val retrofit by lazy{
-        Retrofit.Builder().baseUrl("http://10.0.2.2:8000/api/")
+        Retrofit.Builder().baseUrl("https://librear-api-f0e82c02ea90.herokuapp.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
