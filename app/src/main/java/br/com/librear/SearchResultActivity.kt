@@ -43,34 +43,57 @@ class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener 
         progress = findViewById<ProgressBar>(R.id.progressBar)
         progress.visibility = View.GONE
 
-        coursesRecyclerView  = findViewById(R.id.recyclerSearchResult)
+        coursesRecyclerView = findViewById(R.id.recyclerSearchResult)
         coursesRecyclerView.layoutManager = LinearLayoutManager(this)
 
         courseAdapter = CourseAdapter(emptyList())
         coursesRecyclerView.adapter = courseAdapter
-        fetchCourses(searchText.toString())
+        handleIntent(intent)
 
 
     }
-    private fun fetchCourses(term: String){
+
+    private fun fetchCourses(term: String) {
         progress.visibility = View.VISIBLE
         RetrofitInstance.apiInterface.searchCurso(term).enqueue(
-            object: Callback<List<CourseResponse>>{
+            object : Callback<List<CourseResponse>> {
                 override fun onResponse(
                     call: Call<List<CourseResponse>?>,
                     response: Response<List<CourseResponse>?>
                 ) {
+                    progress.visibility = View.GONE
                     courseAdapter.updateCourses(response.body() ?: emptyList())
                 }
 
                 override fun onFailure(call: Call<List<CourseResponse>?>, t: Throwable) {
                     Log.e("Erro Request", "Request de busca de cursos falhou")
+                    Toast.makeText(
+                        this@SearchResultActivity,
+                        "Falha na conexão!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    progress.visibility = View.GONE
                 }
             }
         )
-        progress.visibility = View.GONE
 
     }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        intent.let {
+            setIntent(it)
+            handleIntent(it)
+        }
+    }
+
+    private fun handleIntent(intent: Intent) {
+        val searchText = intent.getStringExtra("searchText")
+        val textView = findViewById<TextView>(R.id.text_searchResult)
+        textView.text = "Resultado da Busca: " + searchText
+        fetchCourses(searchText.toString())
+    }
+
     override fun onProfileClick() {
         println("Profile Clicked")
     }

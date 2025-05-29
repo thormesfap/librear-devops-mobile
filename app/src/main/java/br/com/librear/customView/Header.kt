@@ -14,6 +14,8 @@ import androidx.core.content.edit
 import br.com.librear.LoginActivity
 import br.com.librear.MainActivity
 import br.com.librear.ProfileActivity
+import br.com.librear.SearchResultActivity
+import com.google.android.material.textfield.TextInputLayout
 
 class Header @JvmOverloads constructor(
     context: Context,
@@ -27,6 +29,7 @@ class Header @JvmOverloads constructor(
     private var listener: OnProfileClickListener? = null
     private var searchListener: OnSearchListener? = null
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+    private lateinit var searchContainer: TextInputLayout
 
     interface OnProfileClickListener {
         fun onProfileClick()
@@ -46,9 +49,15 @@ class Header @JvmOverloads constructor(
         profileButton = findViewById(R.id.profile)
         searchField = findViewById(R.id.search)
         logo = findViewById(R.id.logo)
+        searchContainer = findViewById(R.id.search_container)
+
         logo.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
+        }
+        searchContainer.setEndIconOnClickListener {
+            val searchText = searchField.text.toString()
+            performSearch(searchText)
         }
 
         profileButton.setOnClickListener {
@@ -67,16 +76,24 @@ class Header @JvmOverloads constructor(
         searchField.setOnKeyListener { _, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 val searchText = searchField.text.toString()
-                searchListener?.onSearchSubmit(searchText)
+               performSearch(searchText)
                 true
             } else {
                 false
             }
         }
 
+
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
         updateProfileImage()
 
+    }
+
+    private fun performSearch(searchText: String) {
+        val intent = Intent(context, SearchResultActivity::class.java)
+        intent.putExtra("searchText", searchText)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        context.startActivity(intent)
     }
 
     fun setOnProfileClickListener(listener: OnProfileClickListener) {

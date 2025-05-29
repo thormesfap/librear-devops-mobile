@@ -36,8 +36,6 @@ class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.
     }
 
     override fun onSearchSubmit(searchText: String) {
-        val intent = Intent(this, SearchResultActivity::class.java)
-        intent.putExtra("searchText", searchText)
-        startActivity(intent)
+        println("Busca na main.")
     }
 }
