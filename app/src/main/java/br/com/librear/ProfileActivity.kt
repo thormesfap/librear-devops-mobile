@@ -3,6 +3,7 @@ package br.com.librear
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,7 +24,17 @@ class ProfileActivity : AppCompatActivity() {
         logoutButton.setOnClickListener{
             val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
             prefs.edit() { putBoolean("isLoggedIn", false) }
+            prefs.edit() {remove("token")}
+            prefs.edit() {remove("name")}
+            prefs.edit() {remove("email")}
+            prefs.edit() {remove("id")}
             finish()
         }
+
+        val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+        val name = findViewById<TextView>(R.id.NomeUsuario)
+        name.text = prefs.getString("name", "")
+
+
     }
 }

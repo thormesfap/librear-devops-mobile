@@ -1,12 +1,20 @@
 package br.com.librear
 
 import android.R
+import br.com.librear.customView.StripInterface
 import com.google.gson.annotations.SerializedName
+
 
 data class ErrorResponse(
     val message: String,
     val status : String?,
     val codigo: String?
+)
+
+data class User(
+    val id: Int,
+    val name: String,
+    val email: String,
 )
 
 data class LoginResponse(
@@ -35,9 +43,9 @@ data class CourseResponse(
 
 data class AulaResponse(
     val id: Int,
-    val sequencia: Int,
-    val titulo: String,
-    val duracaoMinutos: Int,
+    override val sequencia: Int,
+    override val titulo: String,
+    override val duracaoMinutos: Int,
     val videoUrl: String,
     val transcricao: String?,
     @SerializedName("curso_id")
@@ -46,12 +54,12 @@ data class AulaResponse(
     val createdAt: String,
     @SerializedName("updated_at")
     val updatedAt: String,
-)
+): StripInterface
 
 data class LeituraResponse(
     val id: Int,
-    val sequencia: Int,
-    val titulo: String,
+    override val sequencia: Int,
+    override val titulo: String,
     val conteudo: String,
     @SerializedName("curso_id")
     val cursoId: Int,
@@ -59,4 +67,9 @@ data class LeituraResponse(
     val createdAt: String,
     @SerializedName("updated_at")
     val updatedAt: String,
+    override val duracaoMinutos: Int? = null
+): StripInterface
+
+data class MsgResponse(
+    val msg: String
 )

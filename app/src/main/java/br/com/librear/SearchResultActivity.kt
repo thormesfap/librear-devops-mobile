@@ -46,23 +46,41 @@ class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener 
         coursesRecyclerView = findViewById(R.id.recyclerSearchResult)
         coursesRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        courseAdapter = CourseAdapter(emptyList())
+        courseAdapter = CourseAdapter(emptyList()) { selectedCourse ->
+            val intent = Intent(this, CourseDetailActivity::class.java)
+            intent.putExtra("courseId", selectedCourse.id)
+            startActivity(intent)
+        }
         coursesRecyclerView.adapter = courseAdapter
         handleIntent(intent)
-
 
     }
 
     private fun fetchCourses(term: String) {
         progress.visibility = View.VISIBLE
-        RetrofitInstance.apiInterface.searchCurso(term).enqueue(
+
+        val call: Call<List<CourseResponse>>
+        if(!term.isEmpty()){
+            call = RetrofitInstance.apiInterface.searchCurso(term)
+        } else{
+            call = RetrofitInstance.apiInterface.fetchCursos()
+        }
+        call.enqueue(
             object : Callback<List<CourseResponse>> {
                 override fun onResponse(
                     call: Call<List<CourseResponse>?>,
                     response: Response<List<CourseResponse>?>
                 ) {
                     progress.visibility = View.GONE
-                    courseAdapter.updateCourses(response.body() ?: emptyList())
+                    if (response.isSuccessful) {
+                        courseAdapter.updateCourses(response.body() ?: emptyList())
+                    } else{
+                        Toast.makeText(
+                            this@SearchResultActivity,
+                            "Erro ${response.code()} ao buscar cursos!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
 
                 override fun onFailure(call: Call<List<CourseResponse>?>, t: Throwable) {

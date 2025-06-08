@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 
-class CourseAdapter(private var courses: List<CourseResponse>) :
+class CourseAdapter(private var courses: List<CourseResponse>, private val onItemClicked: (CourseResponse) -> Unit) :
     RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,7 +31,7 @@ class CourseAdapter(private var courses: List<CourseResponse>) :
         holder.bind(course)
     }
 
-    class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val courseImageView: ImageView =
             itemView.findViewById<ImageView>(R.id.courseImageView)
         private val courseTitleTextView: TextView =
@@ -48,6 +48,9 @@ class CourseAdapter(private var courses: List<CourseResponse>) :
             lessonAmountTextView.text = course.aulas?.size.toString() + " aulas"
             readingsAmountTextView.text = course.leituras?.size.toString() + " leituras"
             courseImageView.load(course.capaUrl)
+            itemView.setOnClickListener{
+                onItemClicked(course)
+            }
         }
 
 

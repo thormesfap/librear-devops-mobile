@@ -42,8 +42,8 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
                 return@setOnClickListener
             }
-            val email = inputEmail.toString()
-            val senha = inputSenha.toString()
+            val email = inputEmail.text.toString()
+            val senha = inputSenha.text.toString()
 
             RetrofitInstance.apiInterface.login(LoginRequest(email, senha)).enqueue(
                 object : Callback<LoginResponse> {
@@ -53,7 +53,55 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
-                            prefs.edit().putBoolean("isLoggedIn", true).apply()
+                            prefs.edit { putString("token", response.body()?.accessToken) }
+
+                            RetrofitInstance.apiInterface.me().enqueue(
+                                object : Callback<User>{
+                                    override fun onResponse(
+                                        call: Call<User?>,
+                                        response: Response<User?>
+                                    ) {
+                                        if(response.isSuccessful){
+                                            val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+                                            prefs.edit { putBoolean("isLoggedIn", true) }
+                                            prefs.edit { putString("name", response.body()?.name) }
+                                            prefs.edit { putString("email", response.body()?.email) }
+                                            prefs.edit { putInt("id", response.body()?.id!!) }
+                                        }
+                                        else{
+                                            Toast.makeText(
+                                                this@LoginActivity,
+                                                "Não foi possível localizar dados do usuário",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                            return
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<User?>, t: Throwable) {
+                                        return
+                                    }
+                                }
+                            )
+                            RetrofitInstance.apiInterface.meusCursos().enqueue(
+                                object : Callback<List<CourseResponse>>{
+                                    override fun onResponse(
+                                        call: Call<List<CourseResponse>?>,
+                                        response: Response<List<CourseResponse>?>
+                                    ) {
+                                        val prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+                                        prefs.edit { putStringSet("meusCursos", response.body()?.map { it.id.toString() }?.toSet())}
+                                    }
+
+                                    override fun onFailure(
+                                        call: Call<List<CourseResponse>?>,
+                                        t: Throwable
+                                    ) {
+                                        TODO("Not yet implemented")
+                                    }
+                                }
+                            )
+
                             Toast.makeText(
                                 this@LoginActivity,
                                 "Login bem sucedido!",
