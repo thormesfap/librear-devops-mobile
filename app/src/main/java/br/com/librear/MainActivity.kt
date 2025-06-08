@@ -3,6 +3,7 @@ package br.com.librear
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -35,8 +36,6 @@ class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.
     }
 
     override fun onSearchSubmit(searchText: String) {
-        val intent = Intent(this, SearchResultActivity::class.java)
-        intent.putExtra("searchText", searchText)
-        startActivity(intent)
+        println("Busca na main.")
     }
 }

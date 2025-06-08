@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:background="@drawable/shape_form_background"
-    android:elevation="4dp"
+
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="16dp">
@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/courseImageView"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/roundstyle"
         android:clipToOutline="true"

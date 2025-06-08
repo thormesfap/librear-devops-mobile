@@ -9,52 +9,59 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="12dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="48dp"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:src="@drawable/logo"
-        android:contentDescription="Botão para ir para tela de inicial"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/menu"
-        android:layout_height="match_parent"
-        android:layout_width="48dp"
-        android:padding="8dp"
-        android:src="@drawable/icon_menu"
-        android:contentDescription="Botão para abrir menu"
-        />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:contentDescription="Botão para ir para tela de inicial"
+            android:padding="8dp"
+            android:src="@drawable/logo" />
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/primary"
-        android:hint="Pesquisar"
-        android:drawableTint="@color/secondary"
-        android:textSize="12sp"
-        android:layout_weight="1"
-        android:padding="4dp"
-        android:drawableStart="@drawable/icon_lupa"
-        />
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:contentDescription="Botão para abrir menu"
+            android:padding="8dp"
+            android:src="@drawable/icon_menu" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profile"
-        android:layout_width="48dp"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:src="@drawable/icon_profile"
-        android:clickable="true"
-        android:contentDescription="Botão para ir para tela de login"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        tools:layout_editor_absoluteY="0dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:endIconDrawable="@drawable/icon_lupa"
+            app:endIconMode="custom"
+            >
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="@color/primary"
+                android:hint="Pesquisar"
+                android:inputType="textAutoComplete"
+                android:padding="4dp"
+                android:textColorHint="#999999"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contentDescription="Botão para ir para tela de login"
+            android:padding="8dp"
+            android:src="@drawable/icon_profile"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            tools:layout_editor_absoluteY="0dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

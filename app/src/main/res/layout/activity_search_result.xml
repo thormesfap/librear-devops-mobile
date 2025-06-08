@@ -11,8 +11,22 @@
         android:id="@+id/header_main"
         layout="@layout/header"
         android:layout_width="match_parent"
+        android:elevation="10dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="20dp"
+        android:indeterminateTint="@color/secondary"
+
+        />
 
     <TextView
         android:id="@+id/text_searchResult"
@@ -20,55 +34,67 @@
         android:layout_height="wrap_content"
         android:background="@color/secondary"
         android:fontFamily="@font/poppins"
+        android:elevation="10dp"
         android:text="Resultados de: "
         android:textSize="16dp"
         app:layout_constraintTop_toBottomOf="@id/header_main" />
-
-    <ScrollView
-        android:id="@+id/scroll_searchResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_searchResult">
-
-        <LinearLayout
-            android:id="@+id/linear_searchResult"
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSearchResult"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:paddingBottom="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_searchResult"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+<!--    <ScrollView-->
+<!--        android:id="@+id/scroll_searchResult"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingBottom="64dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/text_searchResult">-->
 
-            <br.com.librear.customView.CourseDetailCard
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:courseDetailDescription="Neste curso, você irá aprender como realizar o acolhimento de alunos com deficiência auditiva, como aspectos dos cuidados com os dispositivos auditivos, especialmente em termos de higienização; atividades de estimulação de habilidades comunicativas, etc."
-                app:courseDetailImage="@drawable/card_recebendo_alunos_com_surdez"
-                app:courseDetailTitle="Recebendo alunos com surdez"
-                app:lessonsAmount="2"
-                app:readingsAmount="2" />
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linear_searchResult"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
 
-            <br.com.librear.customView.CourseDetailCard
-                android:id="@+id/course_aprendendo_libras"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:courseDetailDescription="Aprenda a utilizar a Língua Brasileira de Sinais (LIBRAS) e garanta o entendimento e atendimento adequado às pessoas com deficiência auditiva"
-                app:courseDetailImage="@drawable/card_aprendendo_libras"
-                app:courseDetailTitle="Aprendendo Libras"
-                app:lessonsAmount="6"
-                app:readingsAmount="4" />
+<!--            <br.com.librear.customView.CourseDetailCard-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:courseDetailDescription="Neste curso, você irá aprender como realizar o acolhimento de alunos com deficiência auditiva, como aspectos dos cuidados com os dispositivos auditivos, especialmente em termos de higienização; atividades de estimulação de habilidades comunicativas, etc."-->
+<!--                app:courseDetailImage="@drawable/card_recebendo_alunos_com_surdez"-->
+<!--                app:courseDetailTitle="Recebendo alunos com surdez"-->
+<!--                app:lessonsAmount="2"-->
+<!--                app:readingsAmount="2" />-->
 
-            <br.com.librear.customView.CourseDetailCard
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:courseDetailDescription="Aprenda como trabalhar com alunos com experiência de vidas diversas, a ensinar sinais e gramática, como avaliar os alunos, o porquê dar enfoque à literatura, e mais."
-                app:courseDetailImage="@drawable/card_ensino_libras"
-                app:courseDetailTitle="Ensino de Libras"
-                app:lessonsAmount="4"
-                app:readingsAmount="3" />
+<!--            <br.com.librear.customView.CourseDetailCard-->
+<!--                android:id="@+id/course_aprendendo_libras"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:courseDetailDescription="Aprenda a utilizar a Língua Brasileira de Sinais (LIBRAS) e garanta o entendimento e atendimento adequado às pessoas com deficiência auditiva"-->
+<!--                app:courseDetailImage="@drawable/card_aprendendo_libras"-->
+<!--                app:courseDetailTitle="Aprendendo Libras"-->
+<!--                app:lessonsAmount="6"-->
+<!--                app:readingsAmount="4" />-->
 
-        </LinearLayout>
-    </ScrollView>
+<!--            <br.com.librear.customView.CourseDetailCard-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:courseDetailDescription="Aprenda como trabalhar com alunos com experiência de vidas diversas, a ensinar sinais e gramática, como avaliar os alunos, o porquê dar enfoque à literatura, e mais."-->
+<!--                app:courseDetailImage="@drawable/card_ensino_libras"-->
+<!--                app:courseDetailTitle="Ensino de Libras"-->
+<!--                app:lessonsAmount="4"-->
+<!--                app:readingsAmount="3" />-->
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
