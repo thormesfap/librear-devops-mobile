@@ -3,7 +3,9 @@ package br.com.librear
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -15,12 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.librear.customView.CourseDetailCard
 import br.com.librear.customView.Header
+import com.google.android.material.navigation.NavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener {
+class SearchResultActivity : BaseActivity(), Header.OnProfileClickListener{
     private lateinit var coursesRecyclerView: RecyclerView
     private lateinit var courseAdapter: CourseAdapter
     private lateinit var progress: ProgressBar
@@ -34,6 +37,8 @@ class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener 
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupNavigationDrawer(R.id.drawer_layout, R.id.header_main, R.id.included_nav_view)
+
         val searchText = intent.getStringExtra("searchText")
         val textView = findViewById<TextView>(R.id.text_searchResult)
         textView.text = "Resultado da Busca: " + searchText
@@ -53,7 +58,6 @@ class SearchResultActivity : AppCompatActivity(), Header.OnProfileClickListener 
         }
         coursesRecyclerView.adapter = courseAdapter
         handleIntent(intent)
-
     }
 
     private fun fetchCourses(term: String) {

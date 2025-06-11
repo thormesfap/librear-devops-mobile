@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.OnSearchListener {
+class MainActivity : BaseActivity(), Header.OnProfileClickListener, Header.OnSearchListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), Header.OnProfileClickListener, Header.
             insets
         }
         val header = findViewById<Header>(R.id.header_main)
+        setupNavigationDrawer(R.id.drawer_layout, R.id.header_main, R.id.included_nav_view)
         header.setOnProfileClickListener(this)
         header.setOnSearchListener(this)
     }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"/>
+        <item
+            android:id="@+id/todos"
+            android:title="Todos os Cursos"/>
+        <item
+            android:id="@+id/visual"
+            android:title="Deficiência Visual"/>
+        <item
+            android:id="@+id/auditiva"
+            android:title="Deficiência Auditiva"/>
+        <item
+            android:id="@+id/surdocegueira"
+            android:title="Surdocegueira"/>
+    </group>
+</menu>
