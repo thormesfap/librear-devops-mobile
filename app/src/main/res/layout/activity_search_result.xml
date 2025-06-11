@@ -1,100 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchResultActivity">
+    tools:openDrawer="start">
 
-    <br.com.librear.customView.Header
-        android:id="@+id/header_main"
-        layout="@layout/header"
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:elevation="10dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:context=".SearchResultActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="20dp"
-        android:indeterminateTint="@color/secondary"
+        <br.com.librear.customView.Header
+            android:id="@+id/header_main"
+            layout="@layout/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="20dp"
+            android:indeterminateTint="@color/secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-    <TextView
-        android:id="@+id/text_searchResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/secondary"
-        android:fontFamily="@font/poppins"
-        android:elevation="10dp"
-        android:text="Resultados de: "
-        android:textSize="16dp"
-        app:layout_constraintTop_toBottomOf="@id/header_main" />
+            />
+
+        <TextView
+            android:id="@+id/text_searchResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondary"
+            android:elevation="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="Resultados de: "
+            android:textSize="16dp"
+            app:layout_constraintTop_toBottomOf="@id/header_main" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSearchResult"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_gravity="center"
             android:paddingBottom="64dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_searchResult"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
-<!--    <ScrollView-->
-<!--        android:id="@+id/scroll_searchResult"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingBottom="64dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/text_searchResult">-->
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_searchResult" />
+        <!--    <ScrollView-->
+        <!--        android:id="@+id/scroll_searchResult"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:paddingBottom="64dp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/text_searchResult">-->
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/linear_searchResult"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center"-->
-<!--            android:orientation="vertical">-->
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/linear_searchResult"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:orientation="vertical">-->
 
-<!--            <br.com.librear.customView.CourseDetailCard-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:courseDetailDescription="Neste curso, você irá aprender como realizar o acolhimento de alunos com deficiência auditiva, como aspectos dos cuidados com os dispositivos auditivos, especialmente em termos de higienização; atividades de estimulação de habilidades comunicativas, etc."-->
-<!--                app:courseDetailImage="@drawable/card_recebendo_alunos_com_surdez"-->
-<!--                app:courseDetailTitle="Recebendo alunos com surdez"-->
-<!--                app:lessonsAmount="2"-->
-<!--                app:readingsAmount="2" />-->
+        <!--            <br.com.librear.customView.CourseDetailCard-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                app:courseDetailDescription="Neste curso, você irá aprender como realizar o acolhimento de alunos com deficiência auditiva, como aspectos dos cuidados com os dispositivos auditivos, especialmente em termos de higienização; atividades de estimulação de habilidades comunicativas, etc."-->
+        <!--                app:courseDetailImage="@drawable/card_recebendo_alunos_com_surdez"-->
+        <!--                app:courseDetailTitle="Recebendo alunos com surdez"-->
+        <!--                app:lessonsAmount="2"-->
+        <!--                app:readingsAmount="2" />-->
 
-<!--            <br.com.librear.customView.CourseDetailCard-->
-<!--                android:id="@+id/course_aprendendo_libras"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:courseDetailDescription="Aprenda a utilizar a Língua Brasileira de Sinais (LIBRAS) e garanta o entendimento e atendimento adequado às pessoas com deficiência auditiva"-->
-<!--                app:courseDetailImage="@drawable/card_aprendendo_libras"-->
-<!--                app:courseDetailTitle="Aprendendo Libras"-->
-<!--                app:lessonsAmount="6"-->
-<!--                app:readingsAmount="4" />-->
+        <!--            <br.com.librear.customView.CourseDetailCard-->
+        <!--                android:id="@+id/course_aprendendo_libras"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                app:courseDetailDescription="Aprenda a utilizar a Língua Brasileira de Sinais (LIBRAS) e garanta o entendimento e atendimento adequado às pessoas com deficiência auditiva"-->
+        <!--                app:courseDetailImage="@drawable/card_aprendendo_libras"-->
+        <!--                app:courseDetailTitle="Aprendendo Libras"-->
+        <!--                app:lessonsAmount="6"-->
+        <!--                app:readingsAmount="4" />-->
 
-<!--            <br.com.librear.customView.CourseDetailCard-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:courseDetailDescription="Aprenda como trabalhar com alunos com experiência de vidas diversas, a ensinar sinais e gramática, como avaliar os alunos, o porquê dar enfoque à literatura, e mais."-->
-<!--                app:courseDetailImage="@drawable/card_ensino_libras"-->
-<!--                app:courseDetailTitle="Ensino de Libras"-->
-<!--                app:lessonsAmount="4"-->
-<!--                app:readingsAmount="3" />-->
+        <!--            <br.com.librear.customView.CourseDetailCard-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                app:courseDetailDescription="Aprenda como trabalhar com alunos com experiência de vidas diversas, a ensinar sinais e gramática, como avaliar os alunos, o porquê dar enfoque à literatura, e mais."-->
+        <!--                app:courseDetailImage="@drawable/card_ensino_libras"-->
+        <!--                app:courseDetailTitle="Ensino de Libras"-->
+        <!--                app:lessonsAmount="4"-->
+        <!--                app:readingsAmount="3" />-->
 
-<!--        </LinearLayout>-->
-<!--    </ScrollView>-->
+        <!--        </LinearLayout>-->
+        <!--    </ScrollView>-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/included_nav_view"
+        layout="@layout/reusable_navigation_view" />
+</androidx.drawerlayout.widget.DrawerLayout>

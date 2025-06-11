@@ -19,8 +19,8 @@ interface ApiInterface {
     @GET("cursos")
     fun fetchCursos(): Call<List<CourseResponse>>
 
-    @GET("cursos/search")
-    fun searchCurso(@Query("query") term: String): Call<List<CourseResponse>>
+    @GET("cursos/search/{search}")
+    fun searchCurso(@Path("search") term: String): Call<List<CourseResponse>>
 
     @GET("cursos/show/{id}")
     fun fetchCurso(@Path("id") id: Int): Call<CourseResponse>
