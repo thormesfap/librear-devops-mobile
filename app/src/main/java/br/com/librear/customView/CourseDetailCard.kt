@@ -86,6 +86,7 @@ class CourseDetailCard @JvmOverloads constructor(
                 entrarButton.text = "Entrar no Curso"
                 entrarButton.setOnClickListener {
                     val intent = Intent(context, AulaActivity::class.java)
+                    intent.putExtra("aulaId", course.aulas?.get(0)?.id)
                     context.startActivity(intent)
                 }
             } else {

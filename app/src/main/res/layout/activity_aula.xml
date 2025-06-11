@@ -15,16 +15,21 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="412dp"
-        android:layout_height="267dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/header_main"
-        app:srcCompat="@drawable/card_recebendo_alunos_com_surdez" />
+    <WebView
+        android:id="@+id/youtube_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/header_main"
+        />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView5"-->
+<!--        android:layout_width="412dp"-->
+<!--        android:layout_height="267dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/header_main"-->
+<!--        app:srcCompat="@drawable/card_recebendo_alunos_com_surdez" />-->
 
     <LinearLayout
         android:id="@+id/linear_aula"
@@ -33,7 +38,7 @@
         android:orientation="vertical"
         android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView5">
+        app:layout_constraintTop_toBottomOf="@id/youtube_webview">
 
         <TextView
             android:id="@+id/transcricao"
@@ -45,15 +50,15 @@
             android:textSize="35sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textoTranscrito"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:justificationMode="inter_word"
-            android:text="Texto tralala la la la la la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la laTexto tralala la la la la la la la la la Texto tralala la la la la la la la la la"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/textoTranscrito"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:justificationMode="inter_word"-->
+<!--            android:text="Texto tralala la la la la la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la la Texto tralala la la la la la la la la laTexto tralala la la la la la la la la la Texto tralala la la la la la la la la la"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="20sp" />-->
 
         <Button
             android:id="@+id/botaoConcluido"

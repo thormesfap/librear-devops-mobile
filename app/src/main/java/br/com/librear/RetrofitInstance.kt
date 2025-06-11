@@ -23,7 +23,7 @@ object RetrofitInstance {
         if(::retrofit.isInitialized){
             return
         }
-        retrofit = Retrofit.Builder().baseUrl("http://10.0.2.2:8000/api/")
+        retrofit = Retrofit.Builder().baseUrl("https://librear-api-f0e82c02ea90.herokuapp.com/api/")
             .client(createOkHttpClient(context))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
