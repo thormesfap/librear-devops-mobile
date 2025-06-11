@@ -30,4 +30,10 @@ interface ApiInterface {
 
     @POST("cursos/subscribe/{id}")
     fun matricular(@Path("id") id: Int): Call<MsgResponse>
+
+    @GET("aulas/show/{id}")
+    fun showAula(@Path("id") id: Int): Call<AulaResponse>
+
+    @PATCH("aulas/{id}/visto")
+    fun marcarAulaVistA(@Path("id") id: Int): Call<MsgResponse>
 }
