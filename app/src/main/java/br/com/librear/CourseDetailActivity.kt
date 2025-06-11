@@ -18,8 +18,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CourseDetailActivity : AppCompatActivity() {
+class CourseDetailActivity : BaseActivity() {
     private lateinit var binding: ActivityCourseDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCourseDetailBinding.inflate(layoutInflater)
@@ -31,6 +32,7 @@ class CourseDetailActivity : AppCompatActivity() {
         if (courseId > -1) {
             fetchCourseDetails(courseId)
         }
+        setupNavigationDrawer(R.id.drawer_layout, R.id.header_main, R.id.included_nav_view)
         setupWindowInsets()
         setupListeners()
     }

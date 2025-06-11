@@ -1,63 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CourseDetailActivity">
+    tools:openDrawer="start">
 
-    <br.com.librear.customView.Header
-        android:id="@+id/header_main"
-        layout="@layout/header"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:context=".CourseDetailActivity">
 
-    <ScrollView
-        android:id="@+id/scroll_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_main">
-
-        <LinearLayout
-            android:id="@+id/linear_detail"
+        <br.com.librear.customView.Header
+            android:id="@+id/header_main"
+            layout="@layout/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="8dp"
-            android:orientation="vertical">
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ScrollView
+            android:id="@+id/scroll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_main">
 
-            <br.com.librear.customView.CourseDetailCard
-                android:id="@+id/course_detail_card_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/header_main"
-                />
-
-            <TextView
-                android:id="@+id/aulas_header"
+            <LinearLayout
+                android:id="@+id/linear_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:tag="aulas_header"
-                android:text="Aulas"
-                android:textSize="16dp" />
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <TextView
-                android:id="@+id/leituras_header"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:tag="leituras_header"
-                android:text="Leituras"
-                android:textSize="16dp" />
-        </LinearLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <br.com.librear.customView.CourseDetailCard
+                    android:id="@+id/course_detail_card_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/header_main" />
+
+                <TextView
+                    android:id="@+id/aulas_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:tag="aulas_header"
+                    android:text="Aulas"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/leituras_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:tag="leituras_header"
+                    android:text="Leituras"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/included_nav_view"
+        layout="@layout/reusable_navigation_view" />
+</androidx.drawerlayout.widget.DrawerLayout>
