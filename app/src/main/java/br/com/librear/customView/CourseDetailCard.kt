@@ -105,6 +105,7 @@ class CourseDetailCard @JvmOverloads constructor(
                                         meusCursos?.add(course.id.toString())
                                         shared.edit { putStringSet("meusCursos", meusCursos) }
                                         Toast.makeText(context, "Matrícula realizada com sucesso", Toast.LENGTH_LONG).show()
+                                        updateButtonVisibility(course)
                                     }
                                      else{
                                         Toast.makeText(context, "Não foi possível realizar matrícula no curso", Toast.LENGTH_LONG).show()
