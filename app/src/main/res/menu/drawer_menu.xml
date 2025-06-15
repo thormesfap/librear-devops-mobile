@@ -16,5 +16,8 @@
         <item
             android:id="@+id/surdocegueira"
             android:title="Surdocegueira"/>
+        <item
+            android:id="@+id/login"
+            android:title="Entrar"/>
     </group>
 </menu>
